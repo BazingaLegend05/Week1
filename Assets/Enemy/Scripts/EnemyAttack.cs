@@ -19,6 +19,11 @@ public class EnemyAttack : MonoBehaviour
     {
         tick = delayTimer;
         gunTransform = gameObject.transform.Find("Gun");
+
+        if (playerTransform == null)
+        {
+            playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        }
     }
     void Update()
     {
