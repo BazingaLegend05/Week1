@@ -8,7 +8,7 @@ public class PlayerLocomotion : MonoBehaviour
     Transform playerContainer, cameraContainer;
     public float speed = 6.0f;
     public float jumpSpeed = 10f;
-    public float mouseSensitivity = 2f;
+    public float mouseSensitivity = 200f;
     public float gravity = 20.0f;
     public float lookUpClamp = -30f;
     public float lookDownClamp = 60f;
@@ -22,9 +22,14 @@ public class PlayerLocomotion : MonoBehaviour
     }
     void Update()
     {
-        Locomotion();
-        RotateAndLook();
+        if (!MenuController.IsGamePaused)
+        {
+            Locomotion();
+            RotateAndLook();
+        }
+        
         PerspectiveCheck();
+
     }
     void SetCurrentCamera()
     {
@@ -74,8 +79,8 @@ public class PlayerLocomotion : MonoBehaviour
     }
     void RotateAndLook()
     {
-        rotateX = Input.GetAxis("Mouse X") * mouseSensitivity;
-        rotateY -= Input.GetAxis("Mouse Y") * mouseSensitivity;
+        rotateX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        rotateY -= Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
         rotateY = Mathf.Clamp(rotateY, lookUpClamp, lookDownClamp);
         transform.Rotate(0f, rotateX, 0f);
         cameraContainer.transform.localRotation = Quaternion.Euler(rotateY, 0f, 0f);
