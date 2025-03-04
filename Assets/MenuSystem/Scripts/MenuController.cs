@@ -40,6 +40,11 @@ public class MenuController : MonoBehaviour
                 }
             }
         }
+
+        if (IsGamePaused) 
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
     public void OptionsMenuClose()
     {
