@@ -12,7 +12,13 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        FireWeapon();
+        if (!MenuController.IsGamePaused)
+        {
+            if (Time.deltaTime > 0)
+            {
+                FireWeapon();
+            }
+        }
     }
     void FireWeapon()
     {

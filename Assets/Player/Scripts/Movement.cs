@@ -16,6 +16,7 @@ public class PlayerLocomotion : MonoBehaviour
     float rotateX, rotateY;
     void Start()
     {
+        GameManager.ResetGame();
         Cursor.visible = false;
         characterController = GetComponent<CharacterController>();
         SetCurrentCamera();
@@ -28,6 +29,7 @@ public class PlayerLocomotion : MonoBehaviour
         {
             Locomotion();
             RotateAndLook();
+            PerspectiveCheck();
         }
         
         PerspectiveCheck();
