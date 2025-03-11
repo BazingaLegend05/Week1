@@ -29,7 +29,9 @@ public class Item : MonoBehaviour
     bool isConsumable = true;
     [SerializeField]
     bool isPickupOnCollision = false;
-private void Start()
+    [SerializeField] 
+    int pointValue = 1;
+    private void Start()
     {
         if (isPickupOnCollision)
         {
@@ -68,6 +70,7 @@ private void Start()
     void Use()
     {
         Debug.Log("Using " + transform.name);
+        GameManager.IncrementScore(pointValue);
         if (isConsumable)
         {
             quantity--;

@@ -22,6 +22,7 @@ public class HealthManager : MonoBehaviour
         if (hitPoints <= 0)
         {
             Debug.Log("TODO: GAME OVER - YOU DIED");
+            OnDeath();
         }
     }
     void SetHealthSlider()
@@ -44,5 +45,10 @@ public class HealthManager : MonoBehaviour
         }
         Debug.Log("YAY: " + hitPoints.ToString());
         SetHealthSlider() ;
+    }
+    void OnDeath()
+    {
+        Debug.Log("TODO: GAME OVER - YOU DIED");
+        GameManager.Instance.GameOver();
     }
 }

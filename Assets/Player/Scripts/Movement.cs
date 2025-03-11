@@ -31,9 +31,6 @@ public class PlayerLocomotion : MonoBehaviour
             RotateAndLook();
             PerspectiveCheck();
         }
-        
-        PerspectiveCheck();
-
     }
     void SetCurrentCamera()
     {
